@@ -615,6 +615,56 @@ class ClassicEndPage extends StatelessWidget {
   }
 }
 
+class ColourTitleBar extends StatelessWidget {
+  const ColourTitleBar({
+    Key? key,
+    required this.boxHeight,
+    required this.boxFontSize,
+    required this.colour,
+    required this.barText,
+    this.barTextColour = Colors.white,
+    this.topSpacerHeight = 15
+  }) : super(key: key);
+
+  final Color colour;
+  final double boxHeight;
+  final double boxFontSize;
+  final String barText;
+  final Color barTextColour;
+  final double topSpacerHeight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: topSpacerHeight),
+
+        SizedBox(
+          width: double.infinity,
+          height: boxHeight,
+          child:
+          Container(
+            alignment: Alignment.centerLeft,
+            color: colour,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8,0,0,0),
+              child: Text(barText,
+                style: TextStyle(
+                  color: barTextColour,
+                  fontWeight: FontWeight.w500,
+                  fontSize: boxFontSize,
+
+                ),),
+            ),
+          ),
+        ),
+        const SizedBox(height: 15,),
+      ],
+    );
+  }
+}
+
+
 class CustomTextDoubleSwitch extends StatefulWidget {
   CustomTextDoubleSwitch({Key? key, required this.title, required this.indexPosition, required this.onValueChanged,this.isActive = true, this.upperBoxHeight = 0, this.switchColour = kHighlightedToggleRed, required this.firstText, required this.secondText, this.minWidth = 40}) : super(key: key);
 

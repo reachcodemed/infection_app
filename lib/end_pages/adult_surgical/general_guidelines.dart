@@ -1,9 +1,9 @@
+import "package:flutter/material.dart";
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:infection/custom_widgets.dart';
 import 'package:infection/constants.dart';
 import 'package:infection/functions.dart';
 
-import '../../custom_widgets.dart';
 
 class Allergies extends StatelessWidget {
 
@@ -65,9 +65,9 @@ class Allergies extends StatelessWidget {
                   padding:const  EdgeInsets.fromLTRB(8,0,0,0),
                   child: RichText(
                     text:TextSpan(
-                    children: Functions().antibioticHighlighter("RED colour denotes a Penicillin, which cannot be used in a patient with a Penicillin allergy, irrespective of the nature of the reaction.",
-                    mainTextSize),
-                   ),),
+                      children: Functions().antibioticHighlighter("RED colour denotes a Penicillin, which cannot be used in a patient with a Penicillin allergy, irrespective of the nature of the reaction.",
+                          mainTextSize),
+                    ),),
                 ),
 
                 ColourTitleBar(
