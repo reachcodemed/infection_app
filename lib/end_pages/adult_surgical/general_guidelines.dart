@@ -5,7 +5,9 @@ import 'package:infection/constants.dart';
 import 'package:infection/functions.dart';
 
 
-class Allergies extends StatelessWidget {
+class GeneralGuidelines extends StatelessWidget {
+  const GeneralGuidelines({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +43,21 @@ class Allergies extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children:[
                 ColourTitleBar(
-                  colour: kCovidMaroon,
-                  barText: 'Allergy - Penicillin',
+                  colour: kSurgicalProphylaxisOrange,
+                  barText: 'General Prophylaxis Guidelines',
                   boxHeight: boxHeight,
                   boxFontSize: boxFontSize,
                   topSpacerHeight: 0,),
 
                 Padding(
                   padding: const EdgeInsets.fromLTRB(8,0,0,0),
-                  child: Text("Throughout this app, antibiotics have been colour coded to help you identify which antibiotics you can use in a Penicillin allergy; those that you cannot use in a Penicillin allergy and those that you can use depending on the nature of the allergy.",
+                  child: Text
+                    ("""A single pre-operative dose given at induction of anaesthesia is sufficient for the majority of uncomplicated surgery.
+
+An additional INTRA-OPERATIVE DOSE should be given if there is blood loss of >1.5L OR if duration of surgery is prolonged.
+
+The need for repeat doses DURING SURGERY will depend on the half-life of the antibiotic(s) used.
+""",
                     style: TextStyle(
                       fontSize: mainTextSize,
                     ),),
@@ -58,66 +66,43 @@ class Allergies extends StatelessWidget {
                 ColourTitleBar(
                     boxHeight: boxHeight,
                     boxFontSize: boxFontSize,
-                    colour: kIconLightGrey,
-                    barText: 'Red Antibiotics'),
+                    colour: kSurgicalLightOrange,
+                    barText: 'Antibiotic Re-dosing'),
 
                 Padding(
-                  padding:const  EdgeInsets.fromLTRB(8,0,0,0),
-                  child: RichText(
-                    text:TextSpan(
-                      children: Functions().antibioticHighlighter("RED colour denotes a Penicillin, which cannot be used in a patient with a Penicillin allergy, irrespective of the nature of the reaction.",
-                          mainTextSize),
-                    ),),
+                  padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10,),
+                  child: Column(
+                    children: [
+                      ColourTitleBar(
+                          boxHeight: boxHeight,
+                          boxFontSize: 13,
+                          colour: kHighlightedToggleYellow,
+                          topSpacerHeight: 0,
+                          barText: "Antibiotic        Re-dose if incision to skin close time is",
+                          barTextColour: kSurgicalLightOrange
+
+                      ),
+
+                      const Text("""Gentamicin        Intra-operative re-dosing NOT indicated
+                      
+Teicoplanin        Intra-operative re-dosing NOT indicated
+
+All other abx        >4 hours
+
+The dose of an antibiotic may need adjusting depending on a patient's weight, age and/or renal function
+
+Monitor Gentamicin levels if given for >24 hours
+
+If Gentamicin 5mg/kg is given the dose should not be >480mg
+
+If repeat dose are administered intra-operatively susequent doses must be timed appropriately""",
+                      style: TextStyle(
+                        fontSize: 13,
+                      ),),
+
+                    ],
+                  ),
                 ),
-
-                ColourTitleBar(
-                    boxHeight: boxHeight,
-                    boxFontSize: boxFontSize,
-                    colour: kIconLightGrey,
-                    barTextColour: Colors.white,
-                    barText: "Amber Antibiotics"),
-
-                Padding(
-                  padding:const  EdgeInsets.fromLTRB(8,0,0,0),
-                  child: RichText(
-                    text:TextSpan(
-                      children: Functions().antibioticHighlighter("AMBER colour denotes a Cephalosporin or a Carbapenem antibiotic which can be used in patients with a Penicillin allergy as long as it is not anaphylactoid in nature",
-                          mainTextSize),
-                    ),),
-                ),
-
-                ColourTitleBar(
-                    boxHeight: boxHeight,
-                    boxFontSize: boxFontSize,
-                    colour: kIconLightGrey,
-                    barTextColour: Colors.white,
-                    barText: "Green Antibiotics"),
-
-                Padding(
-                  padding:const  EdgeInsets.fromLTRB(8,0,0,0),
-                  child: RichText(
-                    text:TextSpan(
-                      children: Functions().antibioticHighlighter("GREEN colour denotes all antibiotics which can be used in the context of Penicillin allergy, irrespective of the nature of the reaction.",
-                          mainTextSize),
-                    ),),
-                ),
-
-                ColourTitleBar(
-                    boxHeight: boxHeight,
-                    boxFontSize: boxFontSize,
-                    colour: kIconLightGrey,
-                    barTextColour: Colors.white,
-                    barText: "Nature of the Allergy"),
-
-                Padding(
-                  padding:const  EdgeInsets.fromLTRB(8,0,0,0),
-                  child: RichText(
-                    text:TextSpan(
-                      children: Functions().antibioticHighlighter("If a patient has an allergy to Penicillin, ensure that you ask about the nature of the Penicillin allergy as this makes a difference of treatment regimes",
-                          mainTextSize),
-                    ),),
-                ),
-
 
               ],
 

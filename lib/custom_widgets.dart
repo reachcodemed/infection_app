@@ -664,7 +664,6 @@ class ColourTitleBar extends StatelessWidget {
   }
 }
 
-
 class CustomTextDoubleSwitch extends StatefulWidget {
   CustomTextDoubleSwitch({Key? key, required this.title, required this.indexPosition, required this.onValueChanged,this.isActive = true, this.upperBoxHeight = 0, this.switchColour = kHighlightedToggleRed, required this.firstText, required this.secondText, this.minWidth = 40}) : super(key: key);
 
