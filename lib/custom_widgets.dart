@@ -2028,15 +2028,18 @@ class SubMenuModule extends StatelessWidget {
 }
 
 class SurgicalProphylaxisEndPage extends StatefulWidget {
-  SurgicalProphylaxisEndPage({Key? key, required this.title, this.titleBoxColour = kSurgicalProphylaxisOrange, this.lowerTitle = 'Prophylaxis', required this.selectionTitles, required this.indexTicker, required this.abxSelection, required this.notifyParent}) : super(key: key);
+  SurgicalProphylaxisEndPage({Key? key, required this.title, this.titleBoxColour = kSurgicalProphylaxisOrange, this.lowerTitle = 'Prophylaxis', required this.selectionTitles, required this.indexTicker, required this.abxSelection, required this.notifyParent, required this.antibioticTextOutput, required this.onSelectedItemChanged, required this.onValueChanged}) : super(key: key);
 
   String title;
   Color titleBoxColour;
   String lowerTitle;
   List<Widget> selectionTitles;
   int? abxSelection;
+  String antibioticTextOutput;
   int indexTicker;
   Function notifyParent;
+  Function (int?) onValueChanged;
+  Function (int) onSelectedItemChanged;
 
 
   @override
@@ -2113,13 +2116,7 @@ class _SurgicalProphylaxisEndPageState extends State<SurgicalProphylaxisEndPage>
                         diameterRatio: 1.0,
                         magnification: 1.2,
                         clipBehavior: Clip.none,
-                        onSelectedItemChanged: (index)
-                        {
-                          widget.indexTicker = index;
-                          print(widget.indexTicker);
-                          widget.notifyParent;
-
-                        },
+                        onSelectedItemChanged: widget.onSelectedItemChanged,
                         itemExtent: 30,
                         squeeze: 2,
                         children:widget.selectionTitles,
@@ -2131,12 +2128,8 @@ class _SurgicalProphylaxisEndPageState extends State<SurgicalProphylaxisEndPage>
                 
                 TripleSwitchFullWidth(
                     indexPosition: widget.abxSelection,
-                    onValueChanged: (index)
-                    {
-                      setState(() {
-                        widget.abxSelection = index;
-                      });
-                    },),
+                    onValueChanged: widget.onValueChanged,
+                ),
 
                 const SizedBox(height: 20.0,),
 
@@ -2162,11 +2155,26 @@ class _SurgicalProphylaxisEndPageState extends State<SurgicalProphylaxisEndPage>
                 ),
 
                 const SizedBox(height: 20.0,),
+                Expanded(
+                  child: Scrollbar(
+                    isAlwaysShown: true,
+                    radius: const Radius.circular(10),
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8,0,0,0),
+                        child: RichText
+                          (text: TextSpan(
+                          children: Functions().antibioticHighlighter(widget.antibioticTextOutput,13),
 
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(8,0,0,0),
-                  child: Text("Output Text here"),
+
+                          //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                        ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
+
               ],
 
             ),
