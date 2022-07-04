@@ -27,7 +27,7 @@ class _CoAdministrationCheckState extends State<CoAdministrationCheck> {
     TickerTile(title: 'Gentamicin'),
     TickerTile(title: 'Linezolid'),
     TickerTile(title: 'Meropenem'),
-    TickerTile(title: 'Tazocin'),
+    TickerTile(title: 'Piperacillin-Tazobactam'),
     TickerTile(title: 'Teicoplanin'),
     TickerTile(title: 'Tigecycline'),
     TickerTile(title: 'Vancomycin'),
