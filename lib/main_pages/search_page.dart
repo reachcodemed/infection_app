@@ -13,6 +13,14 @@ import 'package:infection/end_pages/adult_guidelines/cap.dart';
 import 'package:infection/end_pages/adult_guidelines/catheter_uti.dart';
 import 'package:infection/end_pages/adult_guidelines/cellulitis.dart';
 import 'package:infection/end_pages/adult_guidelines/decompensated_liver.dart';
+import 'package:infection/end_pages/antimicrobials/allergies.dart';
+import 'package:infection/end_pages/antimicrobials/antibiotic_spectra.dart';
+import 'package:infection/end_pages/antimicrobials/co_administration.dart';
+import 'package:infection/end_pages/antimicrobials/duration.dart';
+import 'package:infection/end_pages/antimicrobials/information.dart';
+import 'package:infection/end_pages/antimicrobials/iv_oral_switch.dart';
+import 'package:infection/end_pages/antimicrobials/renal_dosing.dart';
+import 'package:infection/end_pages/antimicrobials/will_this_cover.dart';
 import 'package:infection/end_pages/primary_care/dermatophyte_nail.dart';
 import 'package:infection/end_pages/primary_care/dermatophyte_skin.dart';
 import 'package:infection/end_pages/adult_guidelines/empyema.dart';
@@ -333,6 +341,19 @@ class _SearchPageState extends State<SearchPage> {
     'Procalcitonin':RIprocalcitonin(),
     'Rubella': RIrubella(),
     'Syphllis':RIsyphilis(),
+    'Allergies (Antimicrobials)': Allergies(),
+    'Antibiotic Spectra (Antimicrobials)':AbxSpectra(),
+    'Antimicrobial Information (Antimicrobials)': AntimicrobialInformation(),
+    'Antimicrobial Therapy Duration (Antimicrobials)':AntimicrobialDuration(),
+    'Co-Administration Check (Antimicrobials)':CoAdministrationCheck(),
+    'IV to PO Switch (Antimicrobials)':IVOralSwitch(),
+    'Renal Dosing (Antimicrobials)':RenalDosing(),
+    'Will This Antibiotic Cover (Antimicrobials)': WillThisCover(),
+
+
+
+
+
 
   };
 
