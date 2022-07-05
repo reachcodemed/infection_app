@@ -1956,9 +1956,17 @@ class InfectionControlWithTopBoxEndPage extends StatelessWidget {
                 SizedBox(
                   height: widgetSpacing,
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                  child: Text(antibioticTextOutput),
+                Expanded(
+                child: Scrollbar(
+                  isAlwaysShown: true,
+                  radius: const Radius.circular(10),
+                  child: SingleChildScrollView(
+                  child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                      child: Text(antibioticTextOutput),
+    ),
+    ),
+    ),
 
                   //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
                 ),
@@ -2236,10 +2244,17 @@ class InfectionControlWithTwoSubsections1EndPage extends StatelessWidget {
                 SizedBox(
                   height: widgetSpacing,
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                  child: Text(antibioticTextOutput),
-
+                Expanded(
+                child: Scrollbar(
+                isAlwaysShown: true,
+                    radius: const Radius.circular(10),
+                    child: SingleChildScrollView(
+                    child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                                  child: Text(antibioticTextOutput),
+                ),
+                ),
+                ),
                   //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
                 ),
               ],
