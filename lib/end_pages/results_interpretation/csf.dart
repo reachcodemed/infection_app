@@ -454,13 +454,13 @@ class _RIcsfState extends State<RIcsf> {
           }
         }
       }
-      print("These positions are:");
-      print('abx = $isAbxBeforeLP');
-      print('wbc = $isWCCRaised');
-      print('differential = $differential');
-      print('protein = $protein');
-      print('glucose = $glucose');
-      print("");
+      // print("These positions are:");
+      // print('abx = $isAbxBeforeLP');
+      // print('wbc = $isWCCRaised');
+      // print('differential = $differential');
+      // print('protein = $protein');
+      // print('glucose = $glucose');
+      // print("");
     });
   }
 }

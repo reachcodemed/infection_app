@@ -12,6 +12,7 @@ class InfectionApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Infection App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -20,4 +21,3 @@ class InfectionApp extends StatelessWidget {
     );
   }
 }
-
