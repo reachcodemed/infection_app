@@ -2483,127 +2483,130 @@ class ResultsInterpretationEndPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0.0,
-          toolbarHeight: 45.0,
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
           backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(
-              CupertinoIcons.chevron_left,
-              size: 22.0,
-              color: Colors.black,
+          appBar: AppBar(
+            elevation: 0.0,
+            toolbarHeight: 45.0,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: const Icon(
+                CupertinoIcons.chevron_left,
+                size: 22.0,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
           ),
-        ),
-        body: SizedBox.expand(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 10.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 40,
-                  child: Container(
-                    color: topPanelColour,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                          child: Text(
-                            pageTitle,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15.5,
+          body: SizedBox.expand(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 40,
+                    child: Container(
+                      color: topPanelColour,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                            child: Text(
+                              pageTitle,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15.5,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(child: topRedBox),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Column(
-                  children: [
-                    Container(
-                      child: toggleBox1,
-                    ),
-                    Container(
-                      child: toggleBox2,
-                    ),
-                    Container(
-                      child: toggleBox3,
-                    ),
-                    Container(
-                      child: toggleBox4,
-                    ),
-                    Container(
-                      child: toggleBox5,
-                    ),
-                    Container(
-                      child: toggleBox6,
-                    ),
-                    Container(
-                      child: toggleBox7,
-                    ),
-                    Container(
-                      child: toggleBox8,
-                    ),
-                    Container(
-                      child: toggleBox9,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 30,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    color: kSubTitleDarkerYellow,
-                    child: const Padding(
-                      padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(
-                        'Information',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.5,
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Container(child: topRedBox),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        child: toggleBox1,
+                      ),
+                      Container(
+                        child: toggleBox2,
+                      ),
+                      Container(
+                        child: toggleBox3,
+                      ),
+                      Container(
+                        child: toggleBox4,
+                      ),
+                      Container(
+                        child: toggleBox5,
+                      ),
+                      Container(
+                        child: toggleBox6,
+                      ),
+                      Container(
+                        child: toggleBox7,
+                      ),
+                      Container(
+                        child: toggleBox8,
+                      ),
+                      Container(
+                        child: toggleBox9,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 30,
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      color: kSubTitleDarkerYellow,
+                      child: const Padding(
+                        padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Text(
+                          'Information',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15.5,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                  child: Text(antibioticTextOutput),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Text(antibioticTextOutput),
 
-                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                ),
-              ],
+                    //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
