@@ -2029,238 +2029,241 @@ class InfectionControlWithTwoSubsections1EndPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0.0,
-          toolbarHeight: 45.0,
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
           backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(
-              CupertinoIcons.chevron_left,
-              size: 22.0,
-              color: Colors.black,
+          appBar: AppBar(
+            elevation: 0.0,
+            toolbarHeight: 45.0,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: const Icon(
+                CupertinoIcons.chevron_left,
+                size: 22.0,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
           ),
-        ),
-        body: SizedBox.expand(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 10.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 40,
-                  child: Container(
-                    color: topPanelColour,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                          child: Text(
-                            pageTitle,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15.5,
+          body: SizedBox.expand(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 40,
+                    child: Container(
+                      color: topPanelColour,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                            child: Text(
+                              pageTitle,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15.5,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.03,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AutoSizeText(
-                        subPanel1Text,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Column(
-                  children: [
-                    Container(
-                      child: toggleBox1,
-                    ),
-                    Container(
-                      child: toggleBox2,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.425,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child: const Center(
-                              child: AutoSizeText('For Admission')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child: const Center(
-                              child: AutoSizeText('Not For Admission')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.03,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AutoSizeText(
-                        subPanel2Text,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Column(
-                  children: [
-                    Container(
-                      child: toggleBox3,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child:
-                              const Center(child: AutoSizeText('New Positive')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.39,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child: const Center(
-                              child: AutoSizeText('Established Positive')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.2,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child: const Center(child: AutoSizeText('At-risk')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 30,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    color: kInfectionControlBottomPanelGreen,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(
-                        outputPanelTitle,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.5,
-                        ),
+                        ],
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Expanded(
-                  child: Scrollbar(
-                    isAlwaysShown: true,
-                    radius: const Radius.circular(10),
-                    child: SingleChildScrollView(
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Container(
+                      color: kInfectionControlTopPurplePanel,
+                      height: MediaQuery.of(context).size.height * 0.03,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: AutoSizeText(
+                          subPanel1Text,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      )),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        child: toggleBox1,
+                      ),
+                      Container(
+                        child: toggleBox2,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.425,
+                            height: MediaQuery.of(context).size.height * 0.035,
+                            //color: Colors.grey,
+                            child: const Center(
+                                child: AutoSizeText('For Admission')),
+
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(4),
+                              ),
+                              color: kInfectionControlButtonLightGrey,
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Spacer(),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            height: MediaQuery.of(context).size.height * 0.035,
+                            //color: Colors.grey,
+                            child: const Center(
+                                child: AutoSizeText('Not For Admission')),
+
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(4),
+                              ),
+                              color: kInfectionControlButtonLightGrey,
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                      color: kInfectionControlTopPurplePanel,
+                      height: MediaQuery.of(context).size.height * 0.03,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: AutoSizeText(
+                          subPanel2Text,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      )),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        child: toggleBox3,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            height: MediaQuery.of(context).size.height * 0.035,
+                            //color: Colors.grey,
+                            child: const Center(
+                                child: AutoSizeText('New Positive')),
+
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(4),
+                              ),
+                              color: kInfectionControlButtonLightGrey,
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Spacer(),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.39,
+                            height: MediaQuery.of(context).size.height * 0.035,
+                            //color: Colors.grey,
+                            child: const Center(
+                                child: AutoSizeText('Established Positive')),
+
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(4),
+                              ),
+                              color: kInfectionControlButtonLightGrey,
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Spacer(),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: MediaQuery.of(context).size.height * 0.035,
+                            //color: Colors.grey,
+                            child: const Center(child: AutoSizeText('At-risk')),
+
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(4),
+                              ),
+                              color: kInfectionControlButtonLightGrey,
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 30,
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      color: kInfectionControlBottomPanelGreen,
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                        child: Text(antibioticTextOutput),
+                        child: Text(
+                          outputPanelTitle,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15.5,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                ),
-              ],
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Expanded(
+                    child: Scrollbar(
+                      isAlwaysShown: true,
+                      radius: const Radius.circular(10),
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                          child: Text(antibioticTextOutput),
+                        ),
+                      ),
+                    ),
+                    //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -2325,133 +2328,136 @@ class InfectionControlWithTwoSubsections2EndPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0.0,
-          toolbarHeight: 45.0,
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
           backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(
-              CupertinoIcons.chevron_left,
-              size: 22.0,
-              color: Colors.black,
+          appBar: AppBar(
+            elevation: 0.0,
+            toolbarHeight: 45.0,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: const Icon(
+                CupertinoIcons.chevron_left,
+                size: 22.0,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
           ),
-        ),
-        body: SizedBox.expand(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 10.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 40,
-                  child: Container(
-                    color: topPanelColour,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                          child: Text(
-                            pageTitle,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15.5,
+          body: SizedBox.expand(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 40,
+                    child: Container(
+                      color: topPanelColour,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                            child: Text(
+                              pageTitle,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15.5,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.03,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AutoSizeText(
-                        subPanel1Text,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                  child: scroller1,
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.03,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AutoSizeText(
-                        subPanel2Text,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                  child: scroller2,
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 30,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    color: kInfectionControlBottomPanelGreen,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(
-                        outputPanelTitle,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.5,
-                        ),
+                        ],
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                  child: Text(antibioticTextOutput),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Container(
+                      color: kInfectionControlTopPurplePanel,
+                      height: MediaQuery.of(context).size.height * 0.03,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: AutoSizeText(
+                          subPanel1Text,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      )),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Container(
+                    child: scroller1,
+                  ),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Container(
+                      color: kInfectionControlTopPurplePanel,
+                      height: MediaQuery.of(context).size.height * 0.03,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: AutoSizeText(
+                          subPanel2Text,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      )),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Container(
+                    child: scroller2,
+                  ),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 30,
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      color: kInfectionControlBottomPanelGreen,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Text(
+                          outputPanelTitle,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15.5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Text(antibioticTextOutput),
 
-                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                ),
-              ],
+                    //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -56,7 +56,7 @@ class _ICinfluenzaState extends State<ICinfluenza> {
               ngFeed = index;
             });
           },
-          minWidth: (minWidth * 2.75),
+          minWidth: MediaQuery.of(context).size.width * 0.39,
           switchColour: kHighlightedToggleYellow,
           firstText: 'Inpatient',
           secondText: 'A&E Patient'),
