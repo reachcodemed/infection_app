@@ -16,17 +16,13 @@ import 'main_pages/adult_guidelines_page.dart';
 import 'main_pages/adult_surgical_prophylaxis.dart';
 import 'main_pages/covid_19_page.dart';
 
-
-
-Widget IconTemplate (String address)
-{
+Widget IconTemplate(String address) {
   return SizedBox(
-    
     width: 32,
     child: Image(
-        image: AssetImage('custom_icons/$address'),
-        height: 40,
-        width: 32,
+      image: AssetImage('custom_icons/$address'),
+      height: 40,
+      width: 32,
     ),
   );
 }
@@ -34,7 +30,20 @@ Widget IconTemplate (String address)
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  final List<String> homePageTileTitles = ['Advice & Guidance','Antimicrobials','Adult Guidelines','Adult Surgical Prophylaxis','Covid-19', 'Critical Care Guidelines','Dosing and Monitoring','Infection & Prevention Control','OPAT & Ambulatory', 'Paediatric Guidelines','Primary Care Guidelines','Results Interpretation',];
+  final List<String> homePageTileTitles = [
+    'Advice & Guidance',
+    'Antimicrobials',
+    'Adult Guidelines',
+    'Adult Surgical Prophylaxis',
+    'Covid-19',
+    'Critical Care Guidelines',
+    'Dosing and Monitoring',
+    'Infection & Prevention Control',
+    'OPAT & Ambulatory',
+    'Paediatric Guidelines',
+    'Primary Care Guidelines',
+    'Results Interpretation',
+  ];
 
   final List<Widget> homePageTileIcons = [
     IconTemplate('contact.png'),
@@ -47,49 +56,60 @@ class HomePage extends StatelessWidget {
     IconTemplate('ipc.png'),
     IconTemplate('opat.png'),
     IconTemplate('paeds.png'),
-    IconTemplate('gp.png'),
-    IconTemplate('contact.png'),
+    IconTemplate('gpfile.png'),
     IconTemplate('bc.png'),
-
   ];
 
-  final List<Widget> navigateTo = [ ContactsAndGuidance(),
-    Antimicrobials(),AdultGuidelines(),SurgicalProphylaxis(),  Covid19(), CriticalCare(),DosingMonitoring(),InfectionControl(),Opat(), Paediatric(), PrimaryCare(), ResultsInterpretation(),];
+  final List<Widget> navigateTo = [
+    ContactsAndGuidance(),
+    Antimicrobials(),
+    AdultGuidelines(),
+    SurgicalProphylaxis(),
+    Covid19(),
+    CriticalCare(),
+    DosingMonitoring(),
+    InfectionControl(),
+    Opat(),
+    Paediatric(),
+    PrimaryCare(),
+    ResultsInterpretation(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return SubMenuModule(
-        tileLeadingIcon: homePageTileIcons,
-        tileTitles: homePageTileTitles,
-        tileNavigation: navigateTo,
-        topBoxColour: kOpeningPageBlue,
-        topBoxText: 'Guidelines Menu',
-        leadingPadding: 20.0,
-        iconSize: 25,
-
-        topBoxTrailingIcon: Row(
-          children: [
-            GestureDetector(child: const Icon(Icons.search, color: Colors.white, size: 25,),
-                onTap: ()
-                {
-                  Navigator.push(context, CupertinoPageRoute(builder: (context) {
-                    return SearchPage();
-                },));
-
-                },
-            ),
-
-            const SizedBox(width: 10),
-
-            const Icon(
-              CupertinoIcons.info_circle_fill,
+      tileLeadingIcon: homePageTileIcons,
+      tileTitles: homePageTileTitles,
+      tileNavigation: navigateTo,
+      topBoxColour: kOpeningPageBlue,
+      topBoxText: 'Guidelines Menu',
+      leadingPadding: 20.0,
+      iconSize: 25,
+      topBoxTrailingIcon: Row(
+        children: [
+          GestureDetector(
+            child: const Icon(
+              Icons.search,
               color: Colors.white,
-              size: 25,),
-          ],
-        ),
-
+              size: 25,
+            ),
+            onTap: () {
+              Navigator.push(context, CupertinoPageRoute(
+                builder: (context) {
+                  return SearchPage();
+                },
+              ));
+            },
+          ),
+          const SizedBox(width: 10),
+          const Icon(
+            CupertinoIcons.info_circle_fill,
+            color: Colors.white,
+            size: 25,
+          ),
+        ],
+      ),
     );
-
   }
 }
 
@@ -169,5 +189,3 @@ class HomePage extends StatelessWidget {
 //     ),
 //   ),
 // );
-
-
