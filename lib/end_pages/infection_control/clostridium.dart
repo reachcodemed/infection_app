@@ -42,6 +42,7 @@ class _ICclostridiumState extends State<ICclostridium> {
       toggleBox1: CustomTextDoubleSwitch(
           title: '1. Upper GI Bleed?',
           indexPosition: ugiBleed,
+          minWidth: MediaQuery.of(context).size.width * 0.13,
           onValueChanged: (index) {
             setState(() {
               ugiBleed = index;
@@ -60,7 +61,6 @@ class _ICclostridiumState extends State<ICclostridium> {
               ppi = 0;
             });
           },
-          minWidth: minWidth,
           switchColour: kHighlightedToggleYellow,
           firstText: 'No',
           secondText: 'Yes'),
@@ -85,7 +85,7 @@ class _ICclostridiumState extends State<ICclostridium> {
               ppi = 0;
             });
           },
-          minWidth: minWidth,
+          minWidth: MediaQuery.of(context).size.width * 0.13,
           switchColour: kHighlightedToggleYellow,
           firstText: 'No',
           secondText: 'Yes'),
@@ -110,7 +110,7 @@ class _ICclostridiumState extends State<ICclostridium> {
               ppi = 0;
             });
           },
-          minWidth: minWidth,
+          minWidth: MediaQuery.of(context).size.width * 0.13,
           switchColour: kHighlightedToggleYellow,
           firstText: 'No',
           secondText: 'Yes'),
@@ -135,7 +135,7 @@ class _ICclostridiumState extends State<ICclostridium> {
               ppi = 0;
             });
           },
-          minWidth: minWidth,
+          minWidth: MediaQuery.of(context).size.width * 0.13,
           switchColour: kHighlightedToggleYellow,
           firstText: 'No',
           secondText: 'Yes'),
@@ -160,7 +160,7 @@ class _ICclostridiumState extends State<ICclostridium> {
               ppi = 0;
             });
           },
-          minWidth: minWidth,
+          minWidth: MediaQuery.of(context).size.width * 0.13,
           switchColour: kHighlightedToggleYellow,
           firstText: 'No',
           secondText: 'Yes'),
@@ -185,7 +185,7 @@ class _ICclostridiumState extends State<ICclostridium> {
               //ppi = 0;
             });
           },
-          minWidth: minWidth,
+          minWidth: MediaQuery.of(context).size.width * 0.13,
           switchColour: kHighlightedToggleYellow,
           firstText: 'No',
           secondText: 'Yes'),
