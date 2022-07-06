@@ -602,8 +602,6 @@ class ClassicEndPage extends StatelessWidget {
                           text: TextSpan(
                             children: Functions().antibioticHighlighter(
                                 antibioticTextOutput, 13),
-
-                            //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
                           ),
                         ),
                       ),
@@ -1082,6 +1080,680 @@ class _DoubleSwitchFullWidthState extends State<DoubleSwitchFullWidth> {
   }
 }
 
+class InfectionControlWithTopBoxEndPage extends StatelessWidget {
+  const InfectionControlWithTopBoxEndPage({
+    Key? key,
+    required this.pageTitle,
+    this.topPanelColour = kInfectionControlBlue,
+    this.titleTextColour = Colors.white,
+    this.topRedBox,
+    this.toggleBox1,
+    this.toggleBox2,
+    this.toggleBox3,
+    this.toggleBox4,
+    this.toggleBox5,
+    this.toggleBox6,
+    this.toggleBox7,
+    this.toggleBox8,
+    this.toggleBox9,
+    this.antibioticSelectionFunction,
+    required this.antibioticTextOutput,
+    required this.outputPanelTitle,
+    required this.topPanelText,
+    this.widgetSpacing = 15,
+  }) : super(key: key);
+
+  final String pageTitle;
+  final Color topPanelColour;
+  final Color titleTextColour;
+  final Widget? topRedBox;
+  final Widget? toggleBox1;
+  final Widget? toggleBox2;
+  final Widget? toggleBox3;
+  final Widget? toggleBox4;
+  final Widget? toggleBox5;
+  final Widget? toggleBox6;
+  final Widget? toggleBox7;
+  final Widget? toggleBox8;
+  final Widget? toggleBox9;
+
+  final Function? antibioticSelectionFunction;
+  final String antibioticTextOutput;
+  final String outputPanelTitle;
+  final String topPanelText;
+  final double widgetSpacing;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0.0,
+          toolbarHeight: 45.0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(
+              CupertinoIcons.chevron_left,
+              size: 22.0,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        body: SizedBox.expand(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 10.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 40,
+                  child: Container(
+                    color: topPanelColour,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                          child: Text(
+                            pageTitle,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15.5,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Container(
+                    color: kInfectionControlTopPurplePanel,
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Center(
+                        child: AutoSizeText(
+                          topPanelText,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    )),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      child: toggleBox1,
+                    ),
+                    Container(
+                      child: toggleBox2,
+                    ),
+                    Container(
+                      child: toggleBox3,
+                    ),
+                    Container(
+                      child: toggleBox4,
+                    ),
+                    Container(
+                      child: toggleBox5,
+                    ),
+                    Container(
+                      child: toggleBox6,
+                    ),
+                    Container(
+                      child: toggleBox7,
+                    ),
+                    Container(
+                      child: toggleBox8,
+                    ),
+                    Container(
+                      child: toggleBox9,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 30,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    color: kInfectionControlBottomPanelGreen,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                      child: Text(
+                        outputPanelTitle,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Expanded(
+                  child: Scrollbar(
+                    isAlwaysShown: true,
+                    radius: const Radius.circular(10),
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Text(antibioticTextOutput),
+                      ),
+                    ),
+                  ),
+
+                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class InfectionControlWithTwoSubsections1EndPage extends StatelessWidget {
+  const InfectionControlWithTwoSubsections1EndPage({
+    Key? key,
+    required this.pageTitle,
+    this.topPanelColour = kInfectionControlBlue,
+    this.titleTextColour = Colors.white,
+    this.topRedBox,
+    this.toggleBox1,
+    this.toggleBox2,
+    this.toggleBox3,
+    this.toggleBox4,
+    this.toggleBox5,
+    this.toggleBox6,
+    this.toggleBox7,
+    this.toggleBox8,
+    this.toggleBox9,
+    this.antibioticSelectionFunction,
+    required this.antibioticTextOutput,
+    required this.outputPanelTitle,
+    required this.subPanel1Text,
+    required this.subPanel2Text,
+    this.widgetSpacing = 15,
+  }) : super(key: key);
+
+  final String pageTitle;
+  final Color topPanelColour;
+  final Color titleTextColour;
+  final Widget? topRedBox;
+  final Widget? toggleBox1;
+  final Widget? toggleBox2;
+  final Widget? toggleBox3;
+  final Widget? toggleBox4;
+  final Widget? toggleBox5;
+  final Widget? toggleBox6;
+  final Widget? toggleBox7;
+  final Widget? toggleBox8;
+  final Widget? toggleBox9;
+
+  final Function? antibioticSelectionFunction;
+  final String antibioticTextOutput;
+  final String outputPanelTitle;
+  final String subPanel1Text;
+  final String subPanel2Text;
+  final double widgetSpacing;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0.0,
+          toolbarHeight: 45.0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(
+              CupertinoIcons.chevron_left,
+              size: 22.0,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        body: SizedBox.expand(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 10.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 40,
+                  child: Container(
+                    color: topPanelColour,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                          child: Text(
+                            pageTitle,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15.5,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Container(
+                    color: kInfectionControlTopPurplePanel,
+                    height: MediaQuery.of(context).size.height * 0.03,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: AutoSizeText(
+                        subPanel1Text,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    )),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      child: toggleBox1,
+                    ),
+                    Container(
+                      child: toggleBox2,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.425,
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          //color: Colors.grey,
+                          child: const Center(
+                              child: AutoSizeText('For Admission')),
+
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                            color: kInfectionControlButtonLightGrey,
+                            shape: BoxShape.rectangle,
+                          ),
+                        ),
+                        Spacer(),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          //color: Colors.grey,
+                          child: const Center(
+                              child: AutoSizeText('Not For Admission')),
+
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                            color: kInfectionControlButtonLightGrey,
+                            shape: BoxShape.rectangle,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                    color: kInfectionControlTopPurplePanel,
+                    height: MediaQuery.of(context).size.height * 0.03,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: AutoSizeText(
+                        subPanel2Text,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    )),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      child: toggleBox3,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          //color: Colors.grey,
+                          child:
+                          const Center(child: AutoSizeText('New Positive')),
+
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                            color: kInfectionControlButtonLightGrey,
+                            shape: BoxShape.rectangle,
+                          ),
+                        ),
+                        Spacer(),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.39,
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          //color: Colors.grey,
+                          child: const Center(
+                              child: AutoSizeText('Established Positive')),
+
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                            color: kInfectionControlButtonLightGrey,
+                            shape: BoxShape.rectangle,
+                          ),
+                        ),
+                        const Spacer(),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.2,
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          //color: Colors.grey,
+                          child: const Center(child: AutoSizeText('At-risk')),
+
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                            color: kInfectionControlButtonLightGrey,
+                            shape: BoxShape.rectangle,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 30,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    color: kInfectionControlBottomPanelGreen,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                      child: Text(
+                        outputPanelTitle,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Expanded(
+                  child: Scrollbar(
+                    isAlwaysShown: true,
+                    radius: const Radius.circular(10),
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Text(antibioticTextOutput),
+                      ),
+                    ),
+                  ),
+                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class InfectionControlWithTwoSubsections2EndPage extends StatelessWidget {
+  const InfectionControlWithTwoSubsections2EndPage({
+    Key? key,
+    required this.pageTitle,
+    this.topPanelColour = kInfectionControlBlue,
+    this.titleTextColour = Colors.white,
+    this.topRedBox,
+    this.toggleBox1,
+    this.toggleBox2,
+    this.toggleBox3,
+    this.toggleBox4,
+    this.toggleBox5,
+    this.toggleBox6,
+    this.toggleBox7,
+    this.toggleBox8,
+    this.toggleBox9,
+    this.scroller1,
+    this.scroller2,
+    this.antibioticSelectionFunction,
+    required this.antibioticTextOutput,
+    required this.outputPanelTitle,
+    required this.subPanel1Text,
+    required this.subPanel2Text,
+    required this.selectionTitles,
+    required this.selectionTitles2,
+    this.widgetSpacing = 15,
+  }) : super(key: key);
+
+  final String pageTitle;
+  final Color topPanelColour;
+  final Color titleTextColour;
+  final Widget? topRedBox;
+  final Widget? toggleBox1;
+  final Widget? toggleBox2;
+  final Widget? toggleBox3;
+  final Widget? toggleBox4;
+  final Widget? toggleBox5;
+  final Widget? toggleBox6;
+  final Widget? toggleBox7;
+  final Widget? toggleBox8;
+  final Widget? toggleBox9;
+  final Widget? scroller1;
+  final Widget? scroller2;
+
+  final Function? antibioticSelectionFunction;
+  final String antibioticTextOutput;
+  final String outputPanelTitle;
+  final String subPanel1Text;
+  final String subPanel2Text;
+  final double widgetSpacing;
+
+  final List<Widget> selectionTitles;
+  final List<Widget> selectionTitles2;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0.0,
+          toolbarHeight: 45.0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(
+              CupertinoIcons.chevron_left,
+              size: 22.0,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        body: SizedBox.expand(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 10.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 40,
+                  child: Container(
+                    color: topPanelColour,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                          child: Text(
+                            pageTitle,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15.5,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Container(
+                    color: kInfectionControlTopPurplePanel,
+                    height: MediaQuery.of(context).size.height * 0.03,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: AutoSizeText(
+                        subPanel1Text,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    )),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Container(
+                  child: scroller1,
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Container(
+                    color: kInfectionControlTopPurplePanel,
+                    height: MediaQuery.of(context).size.height * 0.03,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: AutoSizeText(
+                        subPanel2Text,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    )),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Container(
+                  child: scroller2,
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 30,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    color: kInfectionControlBottomPanelGreen,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                      child: Text(
+                        outputPanelTitle,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widgetSpacing,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                  child: Text(antibioticTextOutput),
+
+                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class MenuTile extends StatelessWidget {
   const MenuTile(
       {Key? key,
@@ -1226,6 +1898,561 @@ class _QuadSwtichFullWidthState extends State<QuadSwtichFullWidth> {
         ),
         const SizedBox(height: 10),
       ],
+    );
+  }
+}
+
+class ResultsInterpretationEndPage extends StatelessWidget {
+  const ResultsInterpretationEndPage({
+    Key? key,
+    required this.pageTitle,
+    this.topPanelColour = kResultsInterpretationPink,
+    this.titleTextColour = Colors.white,
+    this.topRedBox,
+    this.toggleBox1,
+    this.toggleBox2,
+    this.toggleBox3,
+    this.toggleBox4,
+    this.toggleBox5,
+    this.toggleBox6,
+    this.toggleBox7,
+    this.toggleBox8,
+    this.toggleBox9,
+    this.antibioticSelectionFunction,
+    required this.antibioticTextOutput,
+    this.widgetSpacing = 15,
+  }) : super(key: key);
+
+  final String pageTitle;
+  final Color topPanelColour;
+  final Color titleTextColour;
+  final Widget? topRedBox;
+  final Widget? toggleBox1;
+  final Widget? toggleBox2;
+  final Widget? toggleBox3;
+  final Widget? toggleBox4;
+  final Widget? toggleBox5;
+  final Widget? toggleBox6;
+  final Widget? toggleBox7;
+  final Widget? toggleBox8;
+  final Widget? toggleBox9;
+
+  final Function? antibioticSelectionFunction;
+  final String antibioticTextOutput;
+  final double widgetSpacing;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            elevation: 0.0,
+            toolbarHeight: 45.0,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: const Icon(
+                CupertinoIcons.chevron_left,
+                size: 22.0,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          body: SizedBox.expand(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 40,
+                    child: Container(
+                      color: topPanelColour,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                            child: Text(
+                              pageTitle,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15.5,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Container(child: topRedBox),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        child: toggleBox1,
+                      ),
+                      Container(
+                        child: toggleBox2,
+                      ),
+                      Container(
+                        child: toggleBox3,
+                      ),
+                      Container(
+                        child: toggleBox4,
+                      ),
+                      Container(
+                        child: toggleBox5,
+                      ),
+                      Container(
+                        child: toggleBox6,
+                      ),
+                      Container(
+                        child: toggleBox7,
+                      ),
+                      Container(
+                        child: toggleBox8,
+                      ),
+                      Container(
+                        child: toggleBox9,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 30,
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      color: kSubTitleDarkerYellow,
+                      child: const Padding(
+                        padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Text(
+                          'Information',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15.5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: widgetSpacing,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Text(antibioticTextOutput),
+
+                    //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SpectraColoringTile extends StatelessWidget {
+  SpectraColoringTile({
+    Key? key,
+    required this.title,
+    required this.tileColour,
+    required this.variableColour,
+    this.fontWeight = FontWeight.w400,
+    this.flex = 3,
+    this.customTextColour = Colors.black,
+  }) : super(key: key);
+
+  final String title;
+  final Color tileColour;
+  Color variableColour;
+  int flex;
+  final FontWeight fontWeight;
+  final Color customTextColour;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: flex,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              flex: 8,
+              child: Container(
+                margin: const EdgeInsets.only(
+                  right: 2.0,
+                ),
+                padding: const EdgeInsets.all(4),
+                color: tileColour,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: fontWeight,
+                      color: customTextColour,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                margin: const EdgeInsets.only(
+                  left: 2.0,
+                ),
+                color: variableColour,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SubBarAndText extends StatelessWidget {
+  const SubBarAndText(
+      {Key? key,
+        required this.lowerTitle,
+        required this.outputText,
+        required this.barColour})
+      : super(key: key);
+
+  final String lowerTitle;
+  final String outputText;
+  final Color barColour;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: 25,
+            child: Container(
+              alignment: Alignment.centerLeft,
+              color: barColour,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                child: Text(
+                  lowerTitle,
+                  textAlign: TextAlign.justify,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 15.0,
+          ),
+          Expanded(
+            child: Scrollbar(
+              isAlwaysShown: true,
+              radius: const Radius.circular(10),
+              child: SingleChildScrollView(
+                child: Text(
+                  outputText,
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 15.0,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SubMenuModule extends StatelessWidget {
+  const SubMenuModule(
+      {Key? key,
+        required this.tileTitles,
+        required this.tileNavigation,
+        required this.topBoxColour,
+        required this.topBoxText,
+        this.tileLeadingIcon,
+        this.topBoxTrailingIcon,
+        this.leadingPadding = 20.0,
+        this.iconSize = 0.0})
+      : super(key: key);
+
+  final List<String> tileTitles;
+  final List<Widget> tileNavigation;
+  final List<Widget>? tileLeadingIcon;
+  final Widget? topBoxTrailingIcon;
+  final Color topBoxColour;
+  final String topBoxText;
+  final double leadingPadding;
+  final double iconSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            elevation: 0.0,
+            toolbarHeight: 45.0,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: const Icon(
+                CupertinoIcons.chevron_left,
+                size: 22.0,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          body: SizedBox.expand(
+            child: Column(
+              children: [
+                TopColourBox(
+                  boxColour: topBoxColour,
+                  boxText: topBoxText,
+                  trailingTopBoxIcon: topBoxTrailingIcon,
+                ),
+                Expanded(
+                  child: ListView.separated(
+                    itemCount: tileTitles.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(left: leadingPadding),
+                        child: MenuTile(
+                          tileTitle: tileTitles[index],
+                          navigateTo: tileNavigation[index],
+                          leadingIcon: tileLeadingIcon?[index],
+                          minLeadingWidth: 0.0,
+                          //leadingPadding: leadingPadding,
+                          iconSize: iconSize,
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider(
+                        height: 0.0,
+                        thickness: 1.5,
+                        indent: 20.0,
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SurgicalProphylaxisEndPage extends StatefulWidget {
+  SurgicalProphylaxisEndPage(
+      {Key? key,
+        required this.title,
+        this.titleBoxColour = kSurgicalProphylaxisOrange,
+        this.lowerTitle = 'Prophylaxis',
+        required this.selectionTitles,
+        required this.indexTicker,
+        required this.abxSelection,
+        required this.notifyParent,
+        required this.antibioticTextOutput,
+        required this.onSelectedItemChanged,
+        required this.onValueChanged})
+      : super(key: key);
+
+  String title;
+  Color titleBoxColour;
+  String lowerTitle;
+  List<Widget> selectionTitles;
+  int? abxSelection;
+  String antibioticTextOutput;
+  int indexTicker;
+  Function notifyParent;
+  Function(int?) onValueChanged;
+  Function(int) onSelectedItemChanged;
+
+  @override
+  State<SurgicalProphylaxisEndPage> createState() =>
+      _SurgicalProphylaxisEndPageState();
+}
+
+class _SurgicalProphylaxisEndPageState
+    extends State<SurgicalProphylaxisEndPage> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0.0,
+          toolbarHeight: 45.0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(
+              CupertinoIcons.chevron_left,
+              size: 22.0,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        body: SizedBox.expand(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 10.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 35,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    color: widget.titleBoxColour,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                      child: Text(
+                        widget.title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Container(
+                  color: kSurgicalProphylaxisOrange,
+                  child: Container(
+                    color: Colors.white,
+                    margin: EdgeInsets.all(1),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 150,
+                      child: ListWheelScrollView(
+                        controller: FixedExtentScrollController(
+                          initialItem: 0,
+                        ),
+                        physics: FixedExtentScrollPhysics(),
+                        //perspective: 0.01,
+                        overAndUnderCenterOpacity: 0.3,
+                        diameterRatio: 1.0,
+                        magnification: 1.2,
+                        clipBehavior: Clip.none,
+                        onSelectedItemChanged: widget.onSelectedItemChanged,
+                        itemExtent: 30,
+                        squeeze: 2,
+                        children: widget.selectionTitles,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                TripleSwitchFullWidth(
+                  indexPosition: widget.abxSelection,
+                  onValueChanged: widget.onValueChanged,
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 35,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    color: kSurgicalLightOrange,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                      child: Text(
+                        widget.lowerTitle,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Expanded(
+                  child: Scrollbar(
+                    isAlwaysShown: true,
+                    radius: const Radius.circular(10),
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: RichText(
+                          text: TextSpan(
+                            children: Functions().antibioticHighlighter(
+                                widget.antibioticTextOutput, 13),
+
+                            //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -1779,1231 +3006,6 @@ class _PenicillinSliderState extends State<PenicillinSlider> {
         ),
         SizedBox(height: widget.bottomHeight),
       ],
-    );
-  }
-}
-
-class InfectionControlWithTopBoxEndPage extends StatelessWidget {
-  const InfectionControlWithTopBoxEndPage({
-    Key? key,
-    required this.pageTitle,
-    this.topPanelColour = kInfectionControlBlue,
-    this.titleTextColour = Colors.white,
-    this.topRedBox,
-    this.toggleBox1,
-    this.toggleBox2,
-    this.toggleBox3,
-    this.toggleBox4,
-    this.toggleBox5,
-    this.toggleBox6,
-    this.toggleBox7,
-    this.toggleBox8,
-    this.toggleBox9,
-    this.antibioticSelectionFunction,
-    required this.antibioticTextOutput,
-    required this.outputPanelTitle,
-    required this.topPanelText,
-    this.widgetSpacing = 15,
-  }) : super(key: key);
-
-  final String pageTitle;
-  final Color topPanelColour;
-  final Color titleTextColour;
-  final Widget? topRedBox;
-  final Widget? toggleBox1;
-  final Widget? toggleBox2;
-  final Widget? toggleBox3;
-  final Widget? toggleBox4;
-  final Widget? toggleBox5;
-  final Widget? toggleBox6;
-  final Widget? toggleBox7;
-  final Widget? toggleBox8;
-  final Widget? toggleBox9;
-
-  final Function? antibioticSelectionFunction;
-  final String antibioticTextOutput;
-  final String outputPanelTitle;
-  final String topPanelText;
-  final double widgetSpacing;
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0.0,
-          toolbarHeight: 45.0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(
-              CupertinoIcons.chevron_left,
-              size: 22.0,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        body: SizedBox.expand(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 10.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 40,
-                  child: Container(
-                    color: topPanelColour,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                          child: Text(
-                            pageTitle,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15.5,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Center(
-                        child: AutoSizeText(
-                          topPanelText,
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Column(
-                  children: [
-                    Container(
-                      child: toggleBox1,
-                    ),
-                    Container(
-                      child: toggleBox2,
-                    ),
-                    Container(
-                      child: toggleBox3,
-                    ),
-                    Container(
-                      child: toggleBox4,
-                    ),
-                    Container(
-                      child: toggleBox5,
-                    ),
-                    Container(
-                      child: toggleBox6,
-                    ),
-                    Container(
-                      child: toggleBox7,
-                    ),
-                    Container(
-                      child: toggleBox8,
-                    ),
-                    Container(
-                      child: toggleBox9,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 30,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    color: kInfectionControlBottomPanelGreen,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(
-                        outputPanelTitle,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.5,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Expanded(
-                child: Scrollbar(
-                  isAlwaysShown: true,
-                  radius: const Radius.circular(10),
-                  child: SingleChildScrollView(
-                  child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(antibioticTextOutput),
-    ),
-    ),
-    ),
-
-                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class InfectionControlWithTwoSubsections1EndPage extends StatelessWidget {
-  const InfectionControlWithTwoSubsections1EndPage({
-    Key? key,
-    required this.pageTitle,
-    this.topPanelColour = kInfectionControlBlue,
-    this.titleTextColour = Colors.white,
-    this.topRedBox,
-    this.toggleBox1,
-    this.toggleBox2,
-    this.toggleBox3,
-    this.toggleBox4,
-    this.toggleBox5,
-    this.toggleBox6,
-    this.toggleBox7,
-    this.toggleBox8,
-    this.toggleBox9,
-    this.antibioticSelectionFunction,
-    required this.antibioticTextOutput,
-    required this.outputPanelTitle,
-    required this.subPanel1Text,
-    required this.subPanel2Text,
-    this.widgetSpacing = 15,
-  }) : super(key: key);
-
-  final String pageTitle;
-  final Color topPanelColour;
-  final Color titleTextColour;
-  final Widget? topRedBox;
-  final Widget? toggleBox1;
-  final Widget? toggleBox2;
-  final Widget? toggleBox3;
-  final Widget? toggleBox4;
-  final Widget? toggleBox5;
-  final Widget? toggleBox6;
-  final Widget? toggleBox7;
-  final Widget? toggleBox8;
-  final Widget? toggleBox9;
-
-  final Function? antibioticSelectionFunction;
-  final String antibioticTextOutput;
-  final String outputPanelTitle;
-  final String subPanel1Text;
-  final String subPanel2Text;
-  final double widgetSpacing;
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0.0,
-          toolbarHeight: 45.0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(
-              CupertinoIcons.chevron_left,
-              size: 22.0,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        body: SizedBox.expand(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 10.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 40,
-                  child: Container(
-                    color: topPanelColour,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                          child: Text(
-                            pageTitle,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15.5,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.03,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AutoSizeText(
-                        subPanel1Text,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Column(
-                  children: [
-                    Container(
-                      child: toggleBox1,
-                    ),
-                    Container(
-                      child: toggleBox2,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.425,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child: const Center(
-                              child: AutoSizeText('For Admission')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child: const Center(
-                              child: AutoSizeText('Not For Admission')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.03,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AutoSizeText(
-                        subPanel2Text,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Column(
-                  children: [
-                    Container(
-                      child: toggleBox3,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child:
-                              const Center(child: AutoSizeText('New Positive')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.39,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child: const Center(
-                              child: AutoSizeText('Established Positive')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.2,
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          //color: Colors.grey,
-                          child: const Center(child: AutoSizeText('At-risk')),
-
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                            color: kInfectionControlButtonLightGrey,
-                            shape: BoxShape.rectangle,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 30,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    color: kInfectionControlBottomPanelGreen,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(
-                        outputPanelTitle,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.5,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Expanded(
-                child: Scrollbar(
-                isAlwaysShown: true,
-                    radius: const Radius.circular(10),
-                    child: SingleChildScrollView(
-                    child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                                  child: Text(antibioticTextOutput),
-                ),
-                ),
-                ),
-                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class InfectionControlWithTwoSubsections2EndPage extends StatelessWidget {
-  const InfectionControlWithTwoSubsections2EndPage({
-    Key? key,
-    required this.pageTitle,
-    this.topPanelColour = kInfectionControlBlue,
-    this.titleTextColour = Colors.white,
-    this.topRedBox,
-    this.toggleBox1,
-    this.toggleBox2,
-    this.toggleBox3,
-    this.toggleBox4,
-    this.toggleBox5,
-    this.toggleBox6,
-    this.toggleBox7,
-    this.toggleBox8,
-    this.toggleBox9,
-    this.scroller1,
-    this.scroller2,
-    this.antibioticSelectionFunction,
-    required this.antibioticTextOutput,
-    required this.outputPanelTitle,
-    required this.subPanel1Text,
-    required this.subPanel2Text,
-    required this.selectionTitles,
-    required this.selectionTitles2,
-    this.widgetSpacing = 15,
-  }) : super(key: key);
-
-  final String pageTitle;
-  final Color topPanelColour;
-  final Color titleTextColour;
-  final Widget? topRedBox;
-  final Widget? toggleBox1;
-  final Widget? toggleBox2;
-  final Widget? toggleBox3;
-  final Widget? toggleBox4;
-  final Widget? toggleBox5;
-  final Widget? toggleBox6;
-  final Widget? toggleBox7;
-  final Widget? toggleBox8;
-  final Widget? toggleBox9;
-  final Widget? scroller1;
-  final Widget? scroller2;
-
-  final Function? antibioticSelectionFunction;
-  final String antibioticTextOutput;
-  final String outputPanelTitle;
-  final String subPanel1Text;
-  final String subPanel2Text;
-  final double widgetSpacing;
-
-  final List<Widget> selectionTitles;
-  final List<Widget> selectionTitles2;
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0.0,
-          toolbarHeight: 45.0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(
-              CupertinoIcons.chevron_left,
-              size: 22.0,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        body: SizedBox.expand(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 10.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 40,
-                  child: Container(
-                    color: topPanelColour,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                          child: Text(
-                            pageTitle,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15.5,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.03,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AutoSizeText(
-                        subPanel1Text,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                  child: scroller1,
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                    color: kInfectionControlTopPurplePanel,
-                    height: MediaQuery.of(context).size.height * 0.03,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AutoSizeText(
-                        subPanel2Text,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    )),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Container(
-                  child: scroller2,
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 30,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    color: kInfectionControlBottomPanelGreen,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(
-                        outputPanelTitle,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.5,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widgetSpacing,
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                  child: Text(antibioticTextOutput),
-
-                  //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ResultsInterpretationEndPage extends StatelessWidget {
-  const ResultsInterpretationEndPage({
-    Key? key,
-    required this.pageTitle,
-    this.topPanelColour = kResultsInterpretationPink,
-    this.titleTextColour = Colors.white,
-    this.topRedBox,
-    this.toggleBox1,
-    this.toggleBox2,
-    this.toggleBox3,
-    this.toggleBox4,
-    this.toggleBox5,
-    this.toggleBox6,
-    this.toggleBox7,
-    this.toggleBox8,
-    this.toggleBox9,
-    this.antibioticSelectionFunction,
-    required this.antibioticTextOutput,
-    this.widgetSpacing = 15,
-  }) : super(key: key);
-
-  final String pageTitle;
-  final Color topPanelColour;
-  final Color titleTextColour;
-  final Widget? topRedBox;
-  final Widget? toggleBox1;
-  final Widget? toggleBox2;
-  final Widget? toggleBox3;
-  final Widget? toggleBox4;
-  final Widget? toggleBox5;
-  final Widget? toggleBox6;
-  final Widget? toggleBox7;
-  final Widget? toggleBox8;
-  final Widget? toggleBox9;
-
-  final Function? antibioticSelectionFunction;
-  final String antibioticTextOutput;
-  final double widgetSpacing;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            elevation: 0.0,
-            toolbarHeight: 45.0,
-            backgroundColor: Colors.white,
-            leading: IconButton(
-              icon: const Icon(
-                CupertinoIcons.chevron_left,
-                size: 22.0,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          body: SizedBox.expand(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 10.0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 40,
-                    child: Container(
-                      color: topPanelColour,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                            child: Text(
-                              pageTitle,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15.5,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: widgetSpacing,
-                  ),
-                  Container(child: topRedBox),
-                  SizedBox(
-                    height: widgetSpacing,
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        child: toggleBox1,
-                      ),
-                      Container(
-                        child: toggleBox2,
-                      ),
-                      Container(
-                        child: toggleBox3,
-                      ),
-                      Container(
-                        child: toggleBox4,
-                      ),
-                      Container(
-                        child: toggleBox5,
-                      ),
-                      Container(
-                        child: toggleBox6,
-                      ),
-                      Container(
-                        child: toggleBox7,
-                      ),
-                      Container(
-                        child: toggleBox8,
-                      ),
-                      Container(
-                        child: toggleBox9,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: widgetSpacing,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 30,
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      color: kSubTitleDarkerYellow,
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
-                        child: Text(
-                          'Information',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15.5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: widgetSpacing,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                    child: Text(antibioticTextOutput),
-
-                    //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SpectraColoringTile extends StatelessWidget {
-  SpectraColoringTile({
-    Key? key,
-    required this.title,
-    required this.tileColour,
-    required this.variableColour,
-    this.fontWeight = FontWeight.w400,
-    this.flex = 3,
-    this.customTextColour = Colors.black,
-  }) : super(key: key);
-
-  final String title;
-  final Color tileColour;
-  Color variableColour;
-  int flex;
-  final FontWeight fontWeight;
-  final Color customTextColour;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: flex,
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              flex: 8,
-              child: Container(
-                margin: const EdgeInsets.only(
-                  right: 2.0,
-                ),
-                padding: const EdgeInsets.all(4),
-                color: tileColour,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: fontWeight,
-                      color: customTextColour,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                margin: const EdgeInsets.only(
-                  left: 2.0,
-                ),
-                color: variableColour,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SubBarAndText extends StatelessWidget {
-  const SubBarAndText(
-      {Key? key,
-      required this.lowerTitle,
-      required this.outputText,
-      required this.barColour})
-      : super(key: key);
-
-  final String lowerTitle;
-  final String outputText;
-  final Color barColour;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: 25,
-            child: Container(
-              alignment: Alignment.centerLeft,
-              color: barColour,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                child: Text(
-                  lowerTitle,
-                  textAlign: TextAlign.justify,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15.0,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 15.0,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Text(
-                outputText,
-                textAlign: TextAlign.justify,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 15.0,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SubMenuModule extends StatelessWidget {
-  const SubMenuModule(
-      {Key? key,
-      required this.tileTitles,
-      required this.tileNavigation,
-      required this.topBoxColour,
-      required this.topBoxText,
-      this.tileLeadingIcon,
-      this.topBoxTrailingIcon,
-      this.leadingPadding = 20.0,
-      this.iconSize = 0.0})
-      : super(key: key);
-
-  final List<String> tileTitles;
-  final List<Widget> tileNavigation;
-  final List<Widget>? tileLeadingIcon;
-  final Widget? topBoxTrailingIcon;
-  final Color topBoxColour;
-  final String topBoxText;
-  final double leadingPadding;
-  final double iconSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            elevation: 0.0,
-            toolbarHeight: 45.0,
-            backgroundColor: Colors.white,
-            leading: IconButton(
-              icon: const Icon(
-                CupertinoIcons.chevron_left,
-                size: 22.0,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          body: SizedBox.expand(
-            child: Column(
-              children: [
-                TopColourBox(
-                  boxColour: topBoxColour,
-                  boxText: topBoxText,
-                  trailingTopBoxIcon: topBoxTrailingIcon,
-                ),
-                Expanded(
-                  child: ListView.separated(
-                    itemCount: tileTitles.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(left: leadingPadding),
-                        child: MenuTile(
-                          tileTitle: tileTitles[index],
-                          navigateTo: tileNavigation[index],
-                          leadingIcon: tileLeadingIcon?[index],
-                          minLeadingWidth: 0.0,
-                          //leadingPadding: leadingPadding,
-                          iconSize: iconSize,
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return const Divider(
-                        height: 0.0,
-                        thickness: 1.5,
-                        indent: 20.0,
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SurgicalProphylaxisEndPage extends StatefulWidget {
-  SurgicalProphylaxisEndPage(
-      {Key? key,
-      required this.title,
-      this.titleBoxColour = kSurgicalProphylaxisOrange,
-      this.lowerTitle = 'Prophylaxis',
-      required this.selectionTitles,
-      required this.indexTicker,
-      required this.abxSelection,
-      required this.notifyParent,
-      required this.antibioticTextOutput,
-      required this.onSelectedItemChanged,
-      required this.onValueChanged})
-      : super(key: key);
-
-  String title;
-  Color titleBoxColour;
-  String lowerTitle;
-  List<Widget> selectionTitles;
-  int? abxSelection;
-  String antibioticTextOutput;
-  int indexTicker;
-  Function notifyParent;
-  Function(int?) onValueChanged;
-  Function(int) onSelectedItemChanged;
-
-  @override
-  State<SurgicalProphylaxisEndPage> createState() =>
-      _SurgicalProphylaxisEndPageState();
-}
-
-class _SurgicalProphylaxisEndPageState
-    extends State<SurgicalProphylaxisEndPage> {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0.0,
-          toolbarHeight: 45.0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(
-              CupertinoIcons.chevron_left,
-              size: 22.0,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        body: SizedBox.expand(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 10.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 35,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    color: widget.titleBoxColour,
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(
-                        widget.title,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  color: kSurgicalProphylaxisOrange,
-                  child: Container(
-                    color: Colors.white,
-                    margin: EdgeInsets.all(1),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 150,
-                      child: ListWheelScrollView(
-                        controller: FixedExtentScrollController(
-                          initialItem: 0,
-                        ),
-                        physics: FixedExtentScrollPhysics(),
-                        //perspective: 0.01,
-                        overAndUnderCenterOpacity: 0.3,
-                        diameterRatio: 1.0,
-                        magnification: 1.2,
-                        clipBehavior: Clip.none,
-                        onSelectedItemChanged: widget.onSelectedItemChanged,
-                        itemExtent: 30,
-                        squeeze: 2,
-                        children: widget.selectionTitles,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                TripleSwitchFullWidth(
-                  indexPosition: widget.abxSelection,
-                  onValueChanged: widget.onValueChanged,
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 35,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    color: kSurgicalLightOrange,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                      child: Text(
-                        widget.lowerTitle,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Expanded(
-                  child: Scrollbar(
-                    isAlwaysShown: true,
-                    radius: const Radius.circular(10),
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                        child: RichText(
-                          text: TextSpan(
-                            children: Functions().antibioticHighlighter(
-                                widget.antibioticTextOutput, 13),
-
-                            //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
