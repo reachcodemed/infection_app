@@ -43,7 +43,7 @@ class _RIsyphilisState extends State<RIsyphilis> {
               syphilisOutput();
             });
           },
-          minWidth: minWidth * 1.65,
+          minWidth: MediaQuery.of(context).size.width * 0.2,
           switchColour: kHighlightedToggleYellow,
           firstText: 'Negative',
           secondText: 'Positive'),
@@ -57,7 +57,7 @@ class _RIsyphilisState extends State<RIsyphilis> {
             });
           },
           switchColour: kHighlightedToggleYellow,
-          minWidth: minWidth * 1.65,
+          minWidth: MediaQuery.of(context).size.width * 0.2,
           firstText: 'Negative',
           secondText: 'Positive'),
       toggleBox3: CustomTextDoubleSwitch(
@@ -69,7 +69,7 @@ class _RIsyphilisState extends State<RIsyphilis> {
               syphilisOutput();
             });
           },
-          minWidth: minWidth * 1.65,
+          minWidth: MediaQuery.of(context).size.width * 0.2,
           switchColour: kHighlightedToggleYellow,
           firstText: 'Negative',
           secondText: 'Positive'),
@@ -83,12 +83,12 @@ class _RIsyphilisState extends State<RIsyphilis> {
             });
           },
           switchColour: kHighlightedToggleYellow,
-          minWidth: minWidth * 1.65,
+          minWidth: MediaQuery.of(context).size.width * 0.2,
           firstText: 'Negative',
           secondText: 'Positive'),
       toggleBox5: ToggleSwitchTriple(
         title: 'RPR',
-        minWidth: minWidth,
+        minWidth: MediaQuery.of(context).size.width * 0.16,
         indexPosition: rpr,
         switchColour: kHighlightedToggleYellow,
         onValueChanged: (index) {
