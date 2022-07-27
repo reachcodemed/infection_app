@@ -5,7 +5,6 @@ import 'package:infection/constants.dart';
 import 'package:infection/end_pages/dosing_and_monitoring/height_weight_converter_widget.dart';
 import 'package:infection/end_pages/dosing_and_monitoring/level_template_widget.dart';
 import 'package:infection/functions.dart';
-import 'package:infection/main_pages/opening_page.dart';
 
 
 //TODO: Complete the vancomycin page level adjustment!
@@ -157,7 +156,7 @@ class _VancomycinState extends State<Vancomycin> {
             children: [
               DosingEndPage(
             pageTitle: 'Vancomycin Dosing',
-            antibioticTextOutput1: "Loading Dose\n\nMaintenance Dose\n\nIdeal Body Weight (IBW)\n\nCreatinine Clearance",
+            antibioticTextOutput1: "Loading Dose\n\nMaintenance Dose\n\nCreatinine Clearance\n\nIdeal Body Weight",
             antibioticTextOutput2: '= $finalLoadingDose\n\n= $finalMaintenanceDose\n\n= $finalCreatinineClearance ml/min\n\n= $finalIdealBodyWeight kg',
             topPanelColour: kDosingGreen,
 
