@@ -2044,34 +2044,40 @@ class ResultsInterpretationEndPage extends StatelessWidget {
                   SizedBox(
                     height: widgetSpacing,
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 30,
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      color: kSubTitleDarkerYellow,
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
-                        child: Text(
-                          'Information',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15.5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: widgetSpacing,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                    child: Text(antibioticTextOutput),
 
-                    //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                  ),
+                  SubBarAndText(
+                      lowerTitle: "Information",
+                      outputText: antibioticTextOutput,
+                      barColour: kSubTitleDarkerYellow),
+                  //
+                  // SizedBox(
+                  //   width: double.infinity,
+                  //   height: 30,
+                  //   child: Container(
+                  //     alignment: Alignment.centerLeft,
+                  //     color: kSubTitleDarkerYellow,
+                  //     child: const Padding(
+                  //       padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+                  //       child: Text(
+                  //         'Information',
+                  //         style: TextStyle(
+                  //           color: Colors.white,
+                  //           fontWeight: FontWeight.w500,
+                  //           fontSize: 15.5,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: widgetSpacing,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                  //   child: Text(antibioticTextOutput),
+                  //
+                  //   //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                  // ),
                 ],
               ),
             ),
@@ -2188,10 +2194,17 @@ class SubBarAndText extends StatelessWidget {
             height: 15.0,
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Text(
-                outputText,
-                textAlign: TextAlign.justify,
+            child: Scrollbar(
+              isAlwaysShown: true,
+              radius: const Radius.circular(10),
+              child: Padding(
+                padding: const EdgeInsets.only(left:5,right:10),
+                child: SingleChildScrollView(
+                  child: Text(
+                    outputText,
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
               ),
             ),
           ),
