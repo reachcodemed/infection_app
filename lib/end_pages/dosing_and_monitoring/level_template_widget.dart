@@ -222,12 +222,17 @@ class InterpretationTextFieldAndButton extends StatelessWidget {
   InterpretationTextFieldAndButton({Key? key,
   required this.onChanged,
   required this.onPressed,
-  required this.text, this.extraUnits,}) : super(key: key);
+  required this.text,
+    this.extraUnits,
+  required this.textController,
+  }) : super(key: key);
 
-  Function()onPressed;
-  Function(String)onChanged;
-  String text;
-  Widget? extraUnits;
+  final Function()onPressed;
+  final Function(String)onChanged;
+  final String text;
+  final Widget? extraUnits;
+
+  final TextEditingController textController;
 
 
   @override

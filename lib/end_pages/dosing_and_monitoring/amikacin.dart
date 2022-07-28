@@ -5,7 +5,7 @@ import 'package:infection/constants.dart';
 import 'package:infection/end_pages/dosing_and_monitoring/height_weight_converter_widget.dart';
 import 'package:infection/end_pages/dosing_and_monitoring/level_template_widget.dart';
 import 'package:infection/functions.dart';
-import 'package:infection/main_pages/opening_page.dart';
+
 
 
 
@@ -22,6 +22,8 @@ class _AmikacinState extends State<Amikacin> {
   final fieldTextWeight = TextEditingController();
   final fieldTextAge = TextEditingController();
   final fieldTextCreatinine = TextEditingController();
+  final textControllerTimingandRange= TextEditingController();
+  final textControllerInterpretationAndAdjust = TextEditingController();
 
   int _currentIndexOfBottomBar = 0;
   int? isMale = 0;
@@ -333,6 +335,7 @@ class _AmikacinState extends State<Amikacin> {
                     child: LevelPageBuildingBlock(
                         topBarTitle: 'Timing and range of levels',
                         line1:InterpretationTextFieldAndButton(
+                            textController: textControllerTimingandRange,
                             onChanged: (input)
                             {
                               setState(() {
@@ -368,6 +371,7 @@ class _AmikacinState extends State<Amikacin> {
                   bottomBox: Expanded(
                     child: LevelPageBuildingBlock(topBarTitle: 'Interpretation and dose adjustment',
                     line1:  InterpretationTextFieldAndButton(
+                        textController: textControllerInterpretationAndAdjust,
                         onChanged: (input)
                         {
                           setState(() {

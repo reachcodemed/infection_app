@@ -861,6 +861,7 @@ class DosingEndPage extends StatelessWidget {
     this.toggleBox8,
     this.toggleBox9,
     this.antibioticSelectionFunction,
+    this.additionalBottomTextBox,
     required this.antibioticTextOutput1,
     this.widgetSpacing = 10,
     required this.antibioticTextOutput2,
@@ -879,6 +880,7 @@ class DosingEndPage extends StatelessWidget {
   final Widget? toggleBox7;
   final Widget? toggleBox8;
   final Widget? toggleBox9;
+  final Widget? additionalBottomTextBox;
 
   final Function? antibioticSelectionFunction;
   final String antibioticTextOutput1;
@@ -890,6 +892,7 @@ class DosingEndPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Container(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -987,23 +990,25 @@ class DosingEndPage extends StatelessWidget {
                   height: widgetSpacing,
                 ),
                 Container(
-                  child: Row(
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                        child: Text(antibioticTextOutput1),
-
-                        //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                            child: Text(antibioticTextOutput1),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                            child: Text(
+                              antibioticTextOutput2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                        child: Text(
-                          antibioticTextOutput2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-
-                        //isSelected1[0]&&isSelected2[0]?antibioticTextInput[0]:isSelected1[0]&&isSelected2[1]?antibioticTextInput[1]:isSelected1[1]&&isSelected2[1]?antibioticTextInput[2]:antibioticTextInput[3]),
-                      ),
+                      Container(
+                          child: additionalBottomTextBox),
                     ],
                   ),
                 ),
@@ -2493,6 +2498,133 @@ class TopColourBox extends StatelessWidget {
   }
 }
 
+class ToggleSwitchQuintet extends StatefulWidget {
+  ToggleSwitchQuintet(
+      {Key? key,
+        required this.title,
+        required this.indexPosition,
+        required this.onValueChanged,
+        this.isActive = true,
+        this.upperBoxHeight = 0,
+        required this.firstText,
+        required this.secondText,
+        required this.thirdText,
+        required this.fourthText,
+        required this.fifthText,
+        required this.switchColour,
+        this.buttonSpecificFontSize1 = 15,
+        this.buttonSpecificFontSize2 = 15,
+        this.buttonSpecificFontSize3 = 15,
+        this.minWidth = 35})
+      : super(key: key);
+
+  Function(int?) onValueChanged;
+  String title;
+  int? indexPosition;
+  bool isActive;
+  double upperBoxHeight;
+  String firstText;
+  String secondText;
+  String thirdText;
+  String fourthText;
+  String fifthText;
+  Color switchColour;
+  double buttonSpecificFontSize1;
+  double buttonSpecificFontSize2;
+  double buttonSpecificFontSize3;
+  double minWidth;
+
+  @override
+  _ToggleSwitchQuintetState createState() => _ToggleSwitchQuintetState();
+}
+
+class _ToggleSwitchQuintetState extends State<ToggleSwitchQuintet> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: widget.upperBoxHeight),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              widget.title,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            CupertinoSlidingSegmentedControl<int>(
+              groupValue: widget.indexPosition,
+              children: {
+                0: Container(
+                  alignment: Alignment.center,
+                  constraints:
+                  BoxConstraints.expand(width: widget.minWidth, height: 30),
+                  child: Text(
+                    widget.firstText,
+                    style: const TextStyle(
+                      fontSize: 12.5,
+                    ),
+                  ),
+                ),
+                1: Container(
+                  alignment: Alignment.center,
+                  constraints:
+                  BoxConstraints.expand(width: widget.minWidth, height: 30),
+                  child: Text(
+                    widget.secondText,
+                    style: const TextStyle(
+                      fontSize: 12.5,
+                    ),
+                  ),
+                ),
+                2: Container(
+                  alignment: Alignment.center,
+                  constraints:
+                  BoxConstraints.expand(width: widget.minWidth, height: 30),
+                  child: Text(
+                    widget.thirdText,
+                    style: const TextStyle(
+                      fontSize: 12.5,
+                    ),
+                  ),
+                ),
+                3: Container(
+                  alignment: Alignment.center,
+                  constraints:
+                  BoxConstraints.expand(width: widget.minWidth, height: 30),
+                  child: Text(
+                    widget.fourthText,
+                    style: const TextStyle(
+                      fontSize: 12.5,
+                    ),
+                  ),
+                ),
+                4: Container(
+                  alignment: Alignment.center,
+                  constraints:
+                  BoxConstraints.expand(width: widget.minWidth, height: 30),
+                  child: Text(
+                    widget.fifthText,
+                    style: const TextStyle(
+                      fontSize: 12.5,
+                    ),
+                  ),
+                ),
+              },
+              onValueChanged: widget.onValueChanged,
+              thumbColor: widget.switchColour,
+              backgroundColor: kBackgroundToggleGrey,
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+      ],
+    );
+  }
+}
+
 class ToggleSwitchQuad extends StatefulWidget {
   ToggleSwitchQuad(
       {Key? key,
@@ -2622,6 +2754,7 @@ class ToggleSwitchTriple extends StatefulWidget {
       this.buttonSpecificFontSize1 = 15,
       this.buttonSpecificFontSize2 = 15,
       this.buttonSpecificFontSize3 = 15,
+        this.descriptionSpecificFontSize = 14,
       this.minWidth = 60})
       : super(key: key);
 
@@ -2637,6 +2770,7 @@ class ToggleSwitchTriple extends StatefulWidget {
   double buttonSpecificFontSize1;
   double buttonSpecificFontSize2;
   double buttonSpecificFontSize3;
+  double descriptionSpecificFontSize;
   double minWidth;
 
   @override
@@ -2654,8 +2788,8 @@ class _ToggleSwitchTripleState extends State<ToggleSwitchTriple> {
           children: [
             Text(
               widget.title,
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: widget.descriptionSpecificFontSize,
                 fontWeight: FontWeight.w400,
               ),
             ),

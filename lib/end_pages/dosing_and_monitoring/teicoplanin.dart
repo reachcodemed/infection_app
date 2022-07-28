@@ -2,12 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
-import 'package:infection/custom_widgets.dart';
 import 'package:infection/constants.dart';
 import 'package:infection/end_pages/dosing_and_monitoring/height_weight_converter_widget.dart';
 import 'package:infection/end_pages/dosing_and_monitoring/level_template_widget.dart';
-import 'package:infection/functions.dart';
-import 'package:infection/main_pages/opening_page.dart';
+
 
 
 
@@ -20,10 +18,8 @@ class Teicoplanin extends StatefulWidget {
 
 class _TeicoplaninState extends State<Teicoplanin> {
 
-  final fieldTextHeight = TextEditingController();
-  final fieldTextWeight = TextEditingController();
-  final fieldTextAge = TextEditingController();
-  final fieldTextCreatinine = TextEditingController();
+  final textControllerDosing = TextEditingController();
+  final textControllerCrCl = TextEditingController();
 
   int _currentIndexOfBottomBar = 0;
   int? isMale = 0;
@@ -86,6 +82,7 @@ class _TeicoplaninState extends State<Teicoplanin> {
                     child: LevelPageBuildingBlock(
                         topBarTitle: 'Dosing',
                         line1: InterpretationTextFieldAndButton(
+                            textController: textControllerDosing,
                             onChanged: (input)
                             {
                               setState(() {
@@ -207,7 +204,7 @@ class _TeicoplaninState extends State<Teicoplanin> {
                       ],
                     ),
                     line2: InterpretationTextFieldAndButton(
-
+                        textController: textControllerCrCl,
                         onChanged: (input)
                         {
                           setState(() {

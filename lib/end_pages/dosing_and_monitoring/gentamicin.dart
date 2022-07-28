@@ -22,6 +22,7 @@ class _GentamicinState extends State<Gentamicin> {
   final fieldTextWeight = TextEditingController();
   final fieldTextAge = TextEditingController();
   final fieldTextCreatinine = TextEditingController();
+  final textControllerInterpretation = TextEditingController();
 
   int _currentIndexOfBottomBar = 0;
   int? isMale = 0;
@@ -327,6 +328,7 @@ class _GentamicinState extends State<Gentamicin> {
                     child: LevelPageBuildingBlock(
                         topBarTitle: "Interpretation of gentamicin level",
                       line1:InterpretationTextFieldAndButton(
+                        textController: textControllerInterpretation,
                           onChanged: (input)
                           {
                             setState(() {

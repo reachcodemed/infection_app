@@ -24,6 +24,7 @@ class _VancomycinState extends State<Vancomycin> {
   final fieldTextWeight = TextEditingController();
   final fieldTextAge = TextEditingController();
   final fieldTextCreatinine = TextEditingController();
+  final textControllerInterpretation = TextEditingController();
 
   int _currentIndexOfBottomBar = 0;
   int? isMale = 0;
@@ -32,7 +33,8 @@ class _VancomycinState extends State<Vancomycin> {
   int? currentDose = 0;
   int? currentFrequency = 2;
 
-  String preDoseLevel = '';
+  String preDoseLevelString = '';
+  double preDoseLevelDouble = 0;
 
   String inputAge ='';
   String inputWeight = '';
@@ -42,12 +44,32 @@ class _VancomycinState extends State<Vancomycin> {
   String finalMaintenanceDose = "mg";
   String finalCreatinineClearance = "";
   String finalIdealBodyWeight = "";
+  String finalBottomDosingExtraInformationOutput = "";
+  String finalBottomInterpretationExtraInformationOutput = "";
+
 
   List<double> creatinineValues = [0,20,29,39,54,74,89,109,10000];
-  List<String> maintenanceOutputDoses = ['1g','500mg','750mg','500mg','750mg','1g','1.25g','1.5g','1.5g'];
+  List<List<int>> maintenanceOutputDoses = [
+    [1000,0],
+    [500,1],
+    [750,1],
+    [500,2],
+    [750,2],
+    [1000,2],
+    [1250,2],
+    [1500,2],
+    [1500,2],
+  ];
+
 
   List<double> weightValues = [0,40,59,90,1000];
-  List<String> loadingOutputDoses = ['750mg','1g','1.5g','2g'];
+  List<String> loadingOutputDoses = ['750 mg','1000 mg','1500 mg','2000 mg'];
+
+  List<String> dosingOutputExtraInformation = [
+    "Re-dose when levels in range. Check every 24 hours and discuss with pharmacy prior to re-dosing",
+    "Dosing interval is OD (every 24 hours). Measure a pre-dose (trough) level immediately before the SECOND maintenance dose\n\nNote: DO NOT omit a dose whilst awaiting a serum vancomycin result, unless the patient has severe renal impairment (CrCl <20ml/min) or poor urine output (<0.5ml/kg/hr for >= 6 hours).",
+    "Dosing interval is BD (every 12 hours). Measure a pre-dose (trough) level immediately before the THIRD or FOURTH maintenance dose; whichever falls before the morning dose\n\nNote: DO NOT omit a dose whilst awaiting a serum vancomycin result, unless the patient has severe renal impairment (CrCl <20ml/min) or poor urine output (<0.5ml/kg/hr for >= 6 hours).",
+  ];
 
     void clearText()
   {
@@ -77,22 +99,42 @@ class _VancomycinState extends State<Vancomycin> {
 
     double doseDeterminedWeight;
 
-    if (double.parse(inputWeight) < (Functions().idealBodyWeight(inputHeight,inputWeight,isMale)*1.2))
-    {
-      doseDeterminedWeight = double.parse(inputWeight);
-
-    }
-    else
-    {
-      doseDeterminedWeight = Functions().idealBodyWeight(inputHeight,inputWeight,isMale);
-    }
-
+      if (double.parse(inputWeight) <
+          (Functions().idealBodyWeight(inputHeight, inputWeight, isMale) *
+              1.2)) {
+        doseDeterminedWeight = double.parse(inputWeight);
+      }
+      else {
+        doseDeterminedWeight =
+            Functions().idealBodyWeight(inputHeight, inputWeight, isMale);
+      }
 
     for(int i = 0; i<creatinineValues.length;i++) {
       if (Functions().creatinineClearance(inputCreatinine,doseDeterminedWeight, inputAge, isMale) >= creatinineValues[i] &&
           Functions().creatinineClearance(inputCreatinine, doseDeterminedWeight, inputAge, isMale) < creatinineValues[i + 1])
       {
-        finalMaintenanceDose = maintenanceOutputDoses[i];
+        print("I made it here");
+        finalMaintenanceDose = "${maintenanceOutputDoses[i][0].toStringAsFixed(0)} mg";
+
+        finalBottomDosingExtraInformationOutput = dosingOutputExtraInformation[maintenanceOutputDoses[i][1]];
+        //
+        // if (maintenanceOutputDoses[i][1] == 0)
+        //   {
+        //     finalBottomDosingExtraInformationOutput = dosingOutputExtraInformation[0];
+        //   }
+        // else if (maintenanceOutputDoses[i][1]==1)
+        //   {
+        //     finalBottomDosingExtraInformationOutput = dosingOutputExtraInformation[1];
+        //   }
+        // else if(maintenanceOutputDoses[i][1]==2)
+        //   {
+        //     finalBottomDosingExtraInformationOutput = dosingOutputExtraInformation[2];
+        //   }
+        // else
+        //   {
+        //     finalBottomDosingExtraInformationOutput = "";
+        //   }
+
         break;
       }
     }
@@ -103,11 +145,12 @@ class _VancomycinState extends State<Vancomycin> {
 
       if(double.parse(inputWeight)>=weightValues[j]&&double.parse(inputWeight)<weightValues[j+1])
       {
-        print('Hiyo there $j');
         finalLoadingDose = loadingOutputDoses[j];
         break;
       }
     }
+
+
 
     finalCreatinineClearance = (Functions().creatinineClearance(inputCreatinine,Functions().idealBodyWeight(inputHeight,inputWeight,isMale),inputAge,isMale)).toStringAsFixed(2);
 
@@ -118,6 +161,57 @@ class _VancomycinState extends State<Vancomycin> {
     notifyParent();
 
   }
+
+  levelInterpretationChecker({required int numberOfLevelsToMoveUpOrDown, required String extraStringText})
+  {
+    List<List<int>> matchedPairsDoses = [
+      [0,500],
+      [1, 750],
+      [2, 1000],
+      [3, 1250],
+      [4, 1500],
+    ];
+
+    List<List<int>> matchedPairsFreq = [
+      [0,4],
+      [1,1],
+      [2,2],
+    ];
+
+
+    for (int i = 0; i < maintenanceOutputDoses.length; i ++)
+    {
+      if(matchedPairsFreq[currentFrequency!][1] == maintenanceOutputDoses[i][1] && matchedPairsDoses[currentDose!][1] == maintenanceOutputDoses[i][0])
+      {
+
+        print(i);
+        i = i + numberOfLevelsToMoveUpOrDown;
+
+        if (i >= maintenanceOutputDoses.length-1)
+        {
+          finalBottomInterpretationExtraInformationOutput = "The patient is already at the maximum dose. Check doses were correctly administered and discuss with antimicrobial pharmacist/microbiology. The patient may need reloading.";
+        }
+
+        else if(i == 0)
+          {
+            finalBottomInterpretationExtraInformationOutput = "The patient is beyond minimum dosing and requires discussion with antimicrobial pharmacy/microbiology";
+          }
+        else
+        {
+          finalBottomInterpretationExtraInformationOutput = "$extraStringText ${maintenanceOutputDoses[i][0].toStringAsFixed(0)} mg\n\n${dosingOutputExtraInformation[maintenanceOutputDoses[i][1]]}\n";
+        }
+        break;
+      }
+      else
+      {
+
+        finalBottomInterpretationExtraInformationOutput = "This is not a standard dosing regimen, please discuss with antimicrobial pharmacist/microbiology before changing doses";
+      }
+    }
+
+
+  }
+
 
   notifyParent()
   {
@@ -159,6 +253,15 @@ class _VancomycinState extends State<Vancomycin> {
             antibioticTextOutput1: "Loading Dose\n\nMaintenance Dose\n\nCreatinine Clearance\n\nIdeal Body Weight",
             antibioticTextOutput2: '= $finalLoadingDose\n\n= $finalMaintenanceDose\n\n= $finalCreatinineClearance ml/min\n\n= $finalIdealBodyWeight kg',
             topPanelColour: kDosingGreen,
+            additionalBottomTextBox: Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(top:20,left:8),
+                child: Text(finalBottomDosingExtraInformationOutput,
+                  textAlign: TextAlign.start,
+                ),
+              ),
+            ),
 
                   toggleBox1: WeightOrHeightEntryPaeds(
                       fieldText: fieldTextHeight,
@@ -347,7 +450,7 @@ class _VancomycinState extends State<Vancomycin> {
                 bottomBox: Expanded(
                   child: LevelPageBuildingBlock(
                       topBarTitle: 'Interpretation of vancomycin level',
-                      line1: ToggleSwitchQuad(
+                      line1: ToggleSwitchQuintet(
                           title: "Current Dose?",
                           indexPosition: currentDose,
                           onValueChanged: (index)
@@ -362,10 +465,12 @@ class _VancomycinState extends State<Vancomycin> {
                           secondText: '0.75g',
                           thirdText: "1g",
                           fourthText: '1.25g',
+                          fifthText: '1.5g',
                           switchColour: kVeryLightPinkToggleHighlight),
-                    line2: ToggleSwitchQuad(
+                    line2: ToggleSwitchTriple(
                         title: "Current frequency?",
                         indexPosition: currentFrequency,
+                        descriptionSpecificFontSize: 13,
                         onValueChanged: (index)
                         {
                           setState(() {
@@ -376,21 +481,135 @@ class _VancomycinState extends State<Vancomycin> {
                         firstText: '<OD',
                         secondText: 'OD',
                         thirdText: "BD",
-                        fourthText: 'TDS',
                         switchColour: kVeryLightPinkToggleHighlight),
                     line3: InterpretationTextFieldAndButton(
+                        textController: textControllerInterpretation,
                         onChanged: (input)
                         {
                           setState(() {
-
+                            preDoseLevelString = input;
                           });
+
                         },
                         onPressed: ()
                         {
+                          try
+                          {
+                            preDoseLevelDouble = double.parse(preDoseLevelString);
+
+
+                            setState(() {
+
+                              if (preDoseLevelDouble <5)
+                                {
+                                  levelInterpretationChecker(
+                                      numberOfLevelsToMoveUpOrDown: 2,
+                                      extraStringText: "Increase dose to"
+                                  );
+
+                                }
+                              else if (preDoseLevelDouble >= 5 && preDoseLevelDouble <10)
+                                {
+                                  if(targetLevel == 0)
+                                    {
+                                      levelInterpretationChecker(
+                                          numberOfLevelsToMoveUpOrDown: 1,
+                                          extraStringText: "Increase dose to"
+                                      );
+                                    }
+                                  else if (targetLevel == 1)
+                                    {
+                                      levelInterpretationChecker(
+                                          numberOfLevelsToMoveUpOrDown: 2,
+                                          extraStringText: "Increase dose to"
+                                      );
+                                    }
+                                }
+                              else if (preDoseLevelDouble >=10 && preDoseLevelDouble <15)
+                                {
+                                  if(targetLevel == 0)
+                                  {
+                                    finalBottomInterpretationExtraInformationOutput = "Maintain at present dose, the dosing is within the target range";
+                                  }
+                                  else if (targetLevel == 1)
+                                  {
+                                    levelInterpretationChecker(
+                                        numberOfLevelsToMoveUpOrDown: 1,
+                                        extraStringText: "Increase dose to"
+                                    );
+                                  }
+                                }
+                              else if (preDoseLevelDouble >=15 && preDoseLevelDouble <20)
+                                {
+                                  finalBottomInterpretationExtraInformationOutput = "Maintain at present dose, the dosing is within the target range";
+                                }
+                              else if (preDoseLevelDouble >=20 && preDoseLevelDouble <25)
+                                {
+                                  levelInterpretationChecker(
+                                      numberOfLevelsToMoveUpOrDown: -1,
+                                      extraStringText: "Decrease dose to"
+                                  );
+                                }
+                              else if (preDoseLevelDouble >= 25 && preDoseLevelDouble <30)
+                                {
+                                  levelInterpretationChecker(
+                                      numberOfLevelsToMoveUpOrDown: -2,
+                                      extraStringText: "OMIT next dose and reduce dose to"
+                                  );
+                                }
+                              else
+                                {
+                                  finalBottomInterpretationExtraInformationOutput = "STOP and contact antimicrobial pharmacist or microbiology for advice";
+                                }
+                            });
+                          }
+                          catch(e)
+                          {
+                            print("There was a problem");
+
+                            showDialog<String>(
+                              useSafeArea: true,
+                              barrierDismissible: false,
+                              context: context,
+                              builder:(BuildContext context) => AlertDialog(
+                                  titlePadding: EdgeInsets.only(top:20, left: 10, right: 10,),
+                                  title: Container(
+                                    margin: const EdgeInsets.fromLTRB(10,0,10,15),
+                                    child: const Text('Please complete the text fields with appropriate numerical values',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                      ),
+
+                                    ),
+                                  ),
+                                  actions: [
+
+                                    TextButton(
+                                        child: const Text('Dismiss',
+                                          style: TextStyle(
+                                            fontSize: 14.0,
+                                          ),),
+                                        onPressed: (){
+                                          Navigator.of(context).pop();
+                                          textControllerInterpretation.clear();
+                                          setState(() {
+                                            preDoseLevelDouble = 0;
+                                            preDoseLevelString = '';
+                                          });
+                                        }
+                                    ),
+                                  ]
+                              ),
+                            );
+
+                          }
 
                         },
                         text: 'Pre-dose level?'),
-                    line4: Text("Output Here"),
+                    line4: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(finalBottomInterpretationExtraInformationOutput)),
 
                   ),
                 ),
@@ -400,7 +619,7 @@ class _VancomycinState extends State<Vancomycin> {
                     bottomMainText: 'Twice weekly: If renal function remains stable and pre-dose levels are within recommended range.\n\nAlternate days: If renal function is impaired but stable.\n\nDaily: If renal function changing rapidly, check levels daily to prevent over/under treatment.'),
               ),
 
-              HeightAndWeightConverter(),
+              const HeightAndWeightConverter(),
 
 
             ],
