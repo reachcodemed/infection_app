@@ -733,6 +733,7 @@ resistance
       notifyParent: notifyParent,
 
       firstTextArea: SubBarAndText(
+          //scrollController: ScrollController(initialScrollOffset: 0),
           lowerTitle: "Advice",
           outputText: antibioticOutputText[indexTicker],
           barColour: kAntimicrobialPastelBrown),

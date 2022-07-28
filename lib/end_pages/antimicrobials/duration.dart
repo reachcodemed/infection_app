@@ -213,6 +213,7 @@ It may be necessary to provide therapy beyond the 14 day period. These cases sho
         //   ],
         // ),
         SubBarAndText(
+            //scrollController: ScrollController(initialScrollOffset: 0),
             lowerTitle: "Duration",
             outputText: outputText[indexTicker],
             barColour: kAntimicrobialPastelBrown),

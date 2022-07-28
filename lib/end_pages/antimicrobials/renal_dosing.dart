@@ -440,6 +440,7 @@ CrCl<10mL/min:
         title: "Renal Dosing",
         titleBoxColour: kAntimicrobialMaroon,
         firstTextArea: SubBarAndText(
+            //scrollController: ScrollController(initialScrollOffset: 0),
             lowerTitle: "Duration",
             outputText: antibioticOutputText[indexTicker],
             barColour: kAntimicrobialPastelBrown),

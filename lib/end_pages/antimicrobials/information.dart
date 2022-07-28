@@ -56,6 +56,12 @@ class _AntimicrobialInformationState extends State<AntimicrobialInformation> {
     TickerTile(title: 'Voriconazole'),
   ];
 
+  ScrollController firstScrollController = ScrollController(initialScrollOffset: 0);
+  ScrollController secondScrollController = ScrollController(initialScrollOffset: 0);
+  ScrollController thirdScrollController = ScrollController(initialScrollOffset: 0);
+
+
+
   int indexTicker = 0;
 
   List<List<String>> antibioticInformationOutputs = [
@@ -181,14 +187,17 @@ Intravenous: initially 6mg/kg BD for 2 doses then 3-4mg/kg BD
         title: "Antimicrobial Information",
         titleBoxColour: kAntimicrobialMaroon,
         firstTextArea: SubBarAndText(
+            //scrollController: firstScrollController,
             lowerTitle: "Dosing",
             outputText: antibioticInformationOutputs[indexTicker][0],
             barColour: kAntimicrobialPastelBrown),
         secondTextArea: SubBarAndText(
+            //scrollController: secondScrollController,
             lowerTitle: "Additional Information",
             outputText: antibioticInformationOutputs[indexTicker][1],
             barColour: kIconLightGrey),
         thirdTextArea: SubBarAndText(
+            //scrollController: thirdScrollController,
             lowerTitle: "Pregnancy",
             outputText: antibioticInformationOutputs[indexTicker][2],
             barColour: kAntimicrobialPastelPink),

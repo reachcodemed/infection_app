@@ -520,6 +520,9 @@ class ClassicEndPage extends StatelessWidget {
                                 CupertinoIcons.doc_text_fill,
                                 color: topPanelColour,
                               ),
+
+                              //TODO: Need to actually make the telephone button and the infobutton link to the right UpToDate pages
+
                             ],
                           ),
                         ),
@@ -2046,6 +2049,7 @@ class ResultsInterpretationEndPage extends StatelessWidget {
                   ),
 
                   SubBarAndText(
+                      //scrollController: ScrollController(initialScrollOffset: 0),
                       lowerTitle: "Information",
                       outputText: antibioticTextOutput,
                       barColour: kSubTitleDarkerYellow),
@@ -2153,13 +2157,14 @@ class SpectraColoringTile extends StatelessWidget {
 }
 
 class SubBarAndText extends StatelessWidget {
-  const SubBarAndText(
+  SubBarAndText(
       {Key? key,
         required this.lowerTitle,
         required this.outputText,
         required this.barColour})
       : super(key: key);
 
+  final scrollController = ScrollController();
   final String lowerTitle;
   final String outputText;
   final Color barColour;
@@ -2168,7 +2173,7 @@ class SubBarAndText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
             width: double.infinity,
@@ -2196,10 +2201,12 @@ class SubBarAndText extends StatelessWidget {
           Expanded(
             child: Scrollbar(
               isAlwaysShown: true,
+              controller: scrollController,
               radius: const Radius.circular(10),
               child: Padding(
                 padding: const EdgeInsets.only(left:5,right:10),
                 child: SingleChildScrollView(
+                  controller: scrollController,
                   child: Text(
                     outputText,
                     textAlign: TextAlign.justify,

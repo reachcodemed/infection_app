@@ -218,6 +218,7 @@ class _CoAdministrationCheckState extends State<CoAdministrationCheck> {
             ],
           ),
           secondTextArea: SubBarAndText(
+            //scrollController: ScrollController(),
             lowerTitle: "Duration",
             outputText: outputText,
             barColour: kIconLightGrey),

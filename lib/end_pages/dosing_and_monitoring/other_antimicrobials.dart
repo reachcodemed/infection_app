@@ -297,6 +297,7 @@ Information taken from Severn Pathology, Antimicrobial Reference Laboratory - Gu
 
       firstTextArea:
       SubBarAndText(
+          //scrollController: ScrollController(initialScrollOffset: 0),
           lowerTitle: "Advice",
           outputText: antimicrobialInformation[indexTicker],
           barColour: kDosingLightOrange),

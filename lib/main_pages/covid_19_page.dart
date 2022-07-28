@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:infection/constants.dart';
 import 'package:infection/custom_widgets.dart';
 import 'package:infection/end_pages/covid/antimicrobial_guidance.dart';
-import 'package:infection/home_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'opening_page.dart';
 
@@ -31,6 +30,8 @@ class Covid19 extends StatelessWidget
 
       }
   }
+
+  //TODO: Currently the transition to these webpages is not good. Need to work on the navigation and improve this. Currently it is exiting out to the home page again which is not ideal.
 
 class InstantWebPageOpen extends StatelessWidget {
   const InstantWebPageOpen({Key? key,

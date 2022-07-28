@@ -55,6 +55,7 @@ class _GramStainsState extends State<GramStains> {
       },
       notifyParent: notifyParent,
       firstTextArea: SubBarAndText(
+          //scrollController: ScrollController(initialScrollOffset: 0),
           lowerTitle: "Information",
           // outputText: "outputText",
           outputText: gstains[indexTicker],

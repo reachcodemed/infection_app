@@ -331,6 +331,7 @@ class _OrganismsState extends State<Organisms> {
       },
       notifyParent: notifyParent,
       firstTextArea: SubBarAndText(
+          //scrollController: ScrollController(initialScrollOffset: 0),
           lowerTitle: "Information",
           //outputText: "outputText",
           outputText: organisms[indexTicker],

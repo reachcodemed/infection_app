@@ -109,11 +109,13 @@ If Ciprofloxacin is prescribed, the patient should be counselled for the side ef
         notifyParent: notifyParent,
 
         firstTextArea: SubBarAndText(
+            //scrollController: ScrollController(initialScrollOffset: 0),
             lowerTitle: "Duration",
             outputText: antibioticOutputs[indexTicker],
             barColour: kAntimicrobialPastelBrown),
 
-        secondTextArea: const SubBarAndText(
+        secondTextArea: SubBarAndText(
+            //scrollController: ScrollController(initialScrollOffset: 0),
             lowerTitle: "Inclusion and Exclusion Criteria",
             outputText: """Inclusion criteria
 
